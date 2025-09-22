@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:fruit_hub_dashboard/core/routing/routes.dart';
+import 'package:fruit_hub_dashboard/feature/add_product/presentation/views/add_product_view.dart';
 import 'package:fruit_hub_dashboard/feature/dashboard/presentation/views/dashboard_view.dart';
 
 class AppRouter {
@@ -10,8 +11,8 @@ class AppRouter {
       case Routes.root:
         return _createRoute(const DashboardView());
 
-      case Routes.homeView:
-        return _createRoute(const Scaffold());
+      case Routes.addProduct:
+        return _createRoute(const AddProductView());
 
       default:
         return MaterialPageRoute(

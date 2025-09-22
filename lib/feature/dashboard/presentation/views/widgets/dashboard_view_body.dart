@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub_dashboard/core/routing/routes.dart';
 import 'package:fruit_hub_dashboard/core/widgets/custom_elevated_button.dart';
 
 class DashboardViewBody extends StatelessWidget {
@@ -16,7 +17,9 @@ class DashboardViewBody extends StatelessWidget {
               Expanded(
                 child: CustomElevatedButton(
                   buttonText: 'Next',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(Routes.addProduct);
+                  },
                 ),
               ),
             ],
