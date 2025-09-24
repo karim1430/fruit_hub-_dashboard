@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_hub_dashboard/core/functions/show_snack_bar.dart';
 import 'package:fruit_hub_dashboard/core/widgets/condition_and_control.dart';
 import 'package:fruit_hub_dashboard/core/widgets/custom_elevated_button.dart';
 import 'package:fruit_hub_dashboard/core/widgets/custom_text_form_field.dart';
@@ -24,6 +25,12 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   late num price;
   File? imageFile;
   bool isFeature = false;
+  late num avgRatting;
+  late num count;
+  late num expiration;
+  bool? isOrganic;
+  late int numberOfCallories;
+  late int unitAmount;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -86,6 +93,12 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                           price: price,
                           imageFile: imageFile!,
                           isFeature: isFeature,
+                          avgRatting: avgRatting,
+                          count: count,
+                          expiration: expiration,
+                          numberOfCallories: numberOfCallories,
+                          unitAmount: unitAmount,
+                          reviews: [],
                         );
                         context.read<AddProductCubit>().addProduct(
                           addProductInputEntity: input,
@@ -93,7 +106,10 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                       }
                     } else {
                       autovalidateMode = AutovalidateMode.always;
-                      showErrors(context: context);
+                      showSnackBar(
+                        context: context,
+                        title: 'Please inside image',
+                      );
                       setState(() {});
                     }
                   },
@@ -104,17 +120,5 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
         ),
       ),
     );
-  }
-
-  void showErrors({required BuildContext context}) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text('Please inside image')));
-  }
-
-  void showSuccess({required BuildContext context}) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text('add product successfuly')));
   }
 }

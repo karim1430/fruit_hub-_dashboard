@@ -6,7 +6,6 @@ import 'package:fruit_hub_dashboard/core/utils/setup_get_it.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupGetIt();
   await Firebase.initializeApp(
     options: FirebaseOptions(
       apiKey: 'AIzaSyBwh9OgAhPWX5yodtBsI1wB6BIiQkmDnqM',
@@ -16,6 +15,7 @@ void main() async {
       storageBucket: 'fruit-fe5e7.firebasestorage.app',
     ),
   );
+  setupGetIt();
   runApp(const MyApp());
 }
 
