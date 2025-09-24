@@ -2,9 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_hub_dashboard/core/routing/app_router.dart';
 import 'package:fruit_hub_dashboard/core/routing/routes.dart';
+import 'package:fruit_hub_dashboard/core/utils/setup_get_it.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setupGetIt();
   await Firebase.initializeApp(
     options: FirebaseOptions(
       apiKey: 'AIzaSyBwh9OgAhPWX5yodtBsI1wB6BIiQkmDnqM',

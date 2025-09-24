@@ -1,10 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub_dashboard/core/widgets/condition_and_control.dart';
 import 'package:fruit_hub_dashboard/core/widgets/custom_elevated_button.dart';
 import 'package:fruit_hub_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:fruit_hub_dashboard/core/widgets/image_field.dart';
+import 'package:fruit_hub_dashboard/feature/add_product/domain/entities/add_product_input_entity.dart';
+import 'package:fruit_hub_dashboard/feature/add_product/presentation/manager/add_product/add_product_cubit.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
@@ -75,6 +79,17 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     if (imageFile != null) {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
+                        AddProductInputEntity input = AddProductInputEntity(
+                          name: name,
+                          code: code,
+                          description: description,
+                          price: price,
+                          imageFile: imageFile!,
+                          isFeature: isFeature,
+                        );
+                        context.read<AddProductCubit>().addProduct(
+                          addProductInputEntity: input,
+                        );
                       }
                     } else {
                       autovalidateMode = AutovalidateMode.always;
@@ -95,5 +110,11 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(SnackBar(content: Text('Please inside image')));
+  }
+
+  void showSuccess({required BuildContext context}) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('add product successfuly')));
   }
 }
