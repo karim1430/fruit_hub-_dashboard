@@ -45,6 +45,7 @@ class AddProductModel {
       price: addProductInputEntity.price,
       imageFile: addProductInputEntity.imageFile,
       isFeature: addProductInputEntity.isFeature,
+      imageUrl: addProductInputEntity.imageUrl,
       avgRatting: addProductInputEntity.avgRatting,
       count: addProductInputEntity.count,
       expiration: addProductInputEntity.expiration,
@@ -62,7 +63,8 @@ class AddProductModel {
       'code': code,
       'description': description,
       'price': price,
-      'imageFile': imageFile,
+      // Store only the image URL in Firestore, not the File instance
+      'imageUrl': imageUrl,
       'isFeature': isFeature,
       'avgRatting': avgRatting,
       'count': count,

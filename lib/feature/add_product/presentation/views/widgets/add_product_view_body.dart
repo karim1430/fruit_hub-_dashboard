@@ -25,7 +25,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   late num price;
   File? imageFile;
   bool isFeature = false;
-  late num avgRatting;
+  num avgRatting = 0;
   late num count;
   late num expiration;
   bool? isOrganic;
@@ -52,6 +52,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 SizedBox(height: 16),
                 CustomTextFormField(
                   labelText: 'Product Price',
+                  keyboardType: TextInputType.number,
                   onSaved: (value) {
                     price = num.parse(value!);
                   },
@@ -72,7 +73,56 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   },
                 ),
                 SizedBox(height: 16),
-                ConditionAndControls(),
+                ConditionAndControls(
+                  onCheckChanged: (value) {
+                    isFeature = value;
+                  },
+                ),
+                SizedBox(height: 16),
+                CustomTextFormField(
+                  labelText: 'Average Rating',
+                  keyboardType: TextInputType.number,
+
+                  onSaved: (value) {
+                    avgRatting = num.parse(value!);
+                  },
+                ),
+                SizedBox(height: 16),
+                CustomTextFormField(
+                  labelText: 'Count',
+                  keyboardType: TextInputType.number,
+
+                  onSaved: (value) {
+                    count = num.parse(value!);
+                  },
+                ),
+                SizedBox(height: 16),
+                CustomTextFormField(
+                  labelText: 'Expiration (days)',
+                  keyboardType: TextInputType.number,
+
+                  onSaved: (value) {
+                    expiration = num.parse(value!);
+                  },
+                ),
+                SizedBox(height: 16),
+                CustomTextFormField(
+                  labelText: 'Calories',
+                  keyboardType: TextInputType.number,
+
+                  onSaved: (value) {
+                    numberOfCallories = int.parse(value!);
+                  },
+                ),
+                SizedBox(height: 16),
+                CustomTextFormField(
+                  labelText: 'Unit Amount',
+                  keyboardType: TextInputType.number,
+
+                  onSaved: (value) {
+                    unitAmount = int.parse(value!);
+                  },
+                ),
                 SizedBox(height: 16),
                 ImageField(
                   onFileChange: (image) {
