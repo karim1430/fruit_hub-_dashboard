@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hub_dashboard/core/routing/app_router.dart';
 import 'package:fruit_hub_dashboard/core/routing/routes.dart';
 import 'package:fruit_hub_dashboard/core/services/supabase_sevice.dart';
+import 'package:fruit_hub_dashboard/core/utils/backend_endpoint.dart';
 import 'package:fruit_hub_dashboard/core/utils/setup_get_it.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SupabaseService.initSupabase();
-  await SupabaseService.createBucket('fruits_images');
+  await SupabaseService.createBucket(BackendEndpoint.imagesFolder);
   await Firebase.initializeApp(
     options: FirebaseOptions(
       apiKey: 'AIzaSyBwh9OgAhPWX5yodtBsI1wB6BIiQkmDnqM',

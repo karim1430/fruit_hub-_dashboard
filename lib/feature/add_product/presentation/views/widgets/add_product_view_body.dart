@@ -8,6 +8,7 @@ import 'package:fruit_hub_dashboard/core/widgets/condition_and_control.dart';
 import 'package:fruit_hub_dashboard/core/widgets/custom_elevated_button.dart';
 import 'package:fruit_hub_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:fruit_hub_dashboard/core/widgets/image_field.dart';
+import 'package:fruit_hub_dashboard/core/widgets/is_product_organic.dart';
 import 'package:fruit_hub_dashboard/feature/add_product/domain/entities/add_product_input_entity.dart';
 import 'package:fruit_hub_dashboard/feature/add_product/presentation/manager/add_product/add_product_cubit.dart';
 
@@ -28,7 +29,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   num avgRatting = 0;
   late num count;
   late num expiration;
-  bool? isOrganic;
+  bool? isOrganic = false;
   late int numberOfCallories;
   late int unitAmount;
   @override
@@ -76,6 +77,11 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 ConditionAndControls(
                   onCheckChanged: (value) {
                     isFeature = value;
+                  },
+                ),
+                OrganicProductSwitcher(
+                  onCheckChanged: (value) {
+                    isOrganic = value;
                   },
                 ),
                 SizedBox(height: 16),

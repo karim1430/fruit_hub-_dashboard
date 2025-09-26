@@ -17,6 +17,7 @@ class AddProductModel {
   final int numberOfCallories;
   final int unitAmount;
   final List<ReviewModel> reviews;
+  final int sellingCount;
 
   AddProductModel({
     required this.name,
@@ -33,6 +34,7 @@ class AddProductModel {
     this.isOrganic = false,
     required this.unitAmount,
     required this.reviews,
+    this.sellingCount = 0,
   });
 
   factory AddProductModel.fromEntity(
@@ -49,6 +51,7 @@ class AddProductModel {
       avgRatting: addProductInputEntity.avgRatting,
       count: addProductInputEntity.count,
       expiration: addProductInputEntity.expiration,
+      isOrganic: addProductInputEntity.isOrganic,
       numberOfCallories: addProductInputEntity.numberOfCallories,
       unitAmount: addProductInputEntity.unitAmount,
       reviews: addProductInputEntity.reviews
@@ -72,6 +75,8 @@ class AddProductModel {
       'numberOfCallories': numberOfCallories,
       'unitAmount': unitAmount,
       'reviews': reviews.map((e) => e.toJson()),
+      'isOrganic': isOrganic,
+      'sellingCount': sellingCount,
     };
   }
 }

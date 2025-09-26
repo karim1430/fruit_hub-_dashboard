@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:fruit_hub_dashboard/core/services/storage_service.dart';
+import 'package:fruit_hub_dashboard/core/utils/backend_endpoint.dart';
 import 'package:fruit_hub_dashboard/core/utils/constant.dart';
 import 'package:path/path.dart' as b;
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -33,11 +34,11 @@ class SupabaseService implements StorageService {
     String fileName = b.basenameWithoutExtension(file.path);
     String extensionName = b.extension(file.path);
     final result = await _supabase.client.storage
-        .from('fruits_images')
+        .from(BackendEndpoint.imagesFolder)
         .upload('$path/$fileName$extensionName', file);
 
     final String publicUrl = _supabase.client.storage
-        .from('fruits_images')
+        .from(BackendEndpoint.imagesFolder)
         .getPublicUrl('$path/$fileName$extensionName');
 
     return publicUrl;

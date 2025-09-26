@@ -5,4 +5,5 @@ class BackendEndpoint {
   static const saveData = 'save';
   static String images = 'images';
   static String addProduct = 'addProduct';
+  static String imagesFolder = 'fruits_images';
 }
