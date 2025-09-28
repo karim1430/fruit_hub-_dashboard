@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub_dashboard/core/functions/show_snack_bar.dart';
 import 'package:fruit_hub_dashboard/feature/add_product/presentation/manager/add_product/add_product_cubit.dart';
 import 'package:fruit_hub_dashboard/feature/add_product/presentation/views/widgets/add_product_view_body.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class AddProductViewBodyBlocConsummer extends StatelessWidget {
   const AddProductViewBodyBlocConsummer({super.key});
@@ -19,7 +20,10 @@ class AddProductViewBodyBlocConsummer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return AddProductViewBody();
+        return ModalProgressHUD(
+          inAsyncCall: state is AddProductLoading,
+          child: AddProductViewBody(),
+        );
       },
     );
   }
